@@ -1,0 +1,6 @@
+---
+- name: Install AntiVirus System
+  hosts: antivirus
+  tasks:
+  - include: ../tasks/install.antivirus.yml
+

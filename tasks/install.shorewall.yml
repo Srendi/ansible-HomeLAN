@@ -6,9 +6,11 @@
     # Shorewall
   - name: Install Shorewall Firewall System
     apt: name=shorewall state=present
+  - name: Install Shorewall Firewall Docs
+    apt: name=shorewall-doc state=present  
   - name: Be sure shorewall is running and enabled
     service: name=shorewall state=running enabled=yes
 
-# Reload shorewall
+# Restart shorewall
   - name: Reload shorewall Config
     service: name=shorewall state=restarted

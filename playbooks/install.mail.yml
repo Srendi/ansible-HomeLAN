@@ -1,0 +1,6 @@
+---
+- name: Install Mail System
+  hosts: mail
+  tasks:
+  - include: ../tasks/install.mail.yml
+
