@@ -1,28 +1,28 @@
 ---
 # Install AntiVirus Systems
-- name: Update apt cache
+- name: update apt cache
   apt: update_cache=yes cache_valid_time=3600
 
   # Mail
-- name: Install clamav-daemon Systems
+- name: install clamav-daemon
   apt: name=clamav-daemon state=present
-- name: Be sure clamav-daemon is running and enabled
+- name: enable clamav-daemon
   service: name=clamav-daemon state=running enabled=yes
 
-- name: Install ClamAssassin Systems
+- name: install clamassassin
   apt: name=clamassassin state=present
-- name: Be sure ClamAssassin is running and enabled
+- name: enable clamassassin
   service: name=clamassassin state=running enabled=yes
 
-- name: Install clamsmtp Systems
+- name: install clamsmtp
   apt: name=clamsmtp state=present
 - name: Be sure clamsmtp is running and enabled
   service: name=clamsmtp state=running enabled=yes
   
- - name: Install clamav-unofficial-sigs Systems
+- name: install clamav-unofficial-sigs
   apt: name=clamav-unofficial-sigs state=present
   
-- name: Install dansguardian Systems
+- name: install dansguardian
   apt: name=dansguardian state=present
-- name: Be sure dansguardian is running and enabled
+- name: enable dansguardian
   service: name=dansguardian state=running enabled=yes

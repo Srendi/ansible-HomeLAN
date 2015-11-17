@@ -33,13 +33,13 @@
     apt: name=amavisd-new-postfix state=present
 
 #Spamassassin    
- - name: Install spamassassin
+  - name: Install spamassassin
     apt: name=spamassassin state=present
   - name: Install spamc
     apt: name=spamc state=present
   - name: Install fuzzyocr
     apt: name=fuzzyocr state=present
- - name: Install spamassassin-heatu
+  - name: Install spamassassin-heatu
     apt: name=spamassassin-heatu state=present
   - name: Install spambayes
     apt: name=spambayes state=present
