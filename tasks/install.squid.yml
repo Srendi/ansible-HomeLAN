@@ -1,0 +1,25 @@
+---
+# Install Squid Proxy Server
+  - name: Update apt cache
+    apt: update_cache=yes cache_valid_time=3600
+
+    # Squid
+  - name: Install Squid Proxy Server
+    apt: name=squid3 state=present
+  - name: Install adzapper
+    apt: name=adzapper state=present
+  - name: Install squid-deb-proxy
+    apt: name=squid-deb-proxy state=present
+  - name: Install squid-deb-proxy-client
+    apt: name=squid-deb-proxy-client state=present
+  - name: Install squidguard
+    apt: name=squidguard state=present
+    
+  - name: be sure squid3 is running and enabled
+    service: name=squid3 state=running enabled=yes
+  - name: be sure squid-deb-proxy is running and enabled
+    service: name=squid-deb-proxy state=running enabled=yes
+    
+# Reload BIND9
+  - name: Reload squid3 Config
+    service: name=squid3 state=restarted

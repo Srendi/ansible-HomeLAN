@@ -18,3 +18,18 @@ OneRing
 
 [database]
 OneRing
+
+[dns]
+OneRing
+
+[dhcp]
+OneRing
+
+[proxy]
+OneRing
+
+[dyndns]
+OneRing
+
+[vpn]
+OneRing

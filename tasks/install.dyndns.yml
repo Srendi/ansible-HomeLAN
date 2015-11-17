@@ -1,0 +1,15 @@
+---
+# Install ez-ipupdate DynDNS updater client
+  - name: Update apt cache
+    apt: update_cache=yes cache_valid_time=3600
+
+    # ez-ipupdate
+  - name: Install ez-ipupdate DynDNS Updater Client
+    apt: name=ez-ipupdate state=present
+    
+  - name: be sure ez-ipupdate is running and enabled
+    service: name=ez-ipupdate state=running enabled=yes
+
+# Reload ez-ipupdate
+  - name: Reload ez-ipupdate Config
+    service: name=ez-ipupdate state=restarted

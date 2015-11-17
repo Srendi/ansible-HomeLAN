@@ -1,0 +1,6 @@
+---
+- name: Install isc-dhcp-server Deamon
+  hosts: dhcp
+  tasks:
+  - include: ../tasks/install.dhcpd.yml
+

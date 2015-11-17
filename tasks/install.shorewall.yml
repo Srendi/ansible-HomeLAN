@@ -1,0 +1,14 @@
+---
+# Install Shorewall Firewall System
+  - name: Update apt cache
+    apt: update_cache=yes cache_valid_time=3600
+
+    # Shorewall
+  - name: Install Shorewall Firewall System
+    apt: name=shorewall state=present
+  - name: Be sure shorewall is running and enabled
+    service: name=shorewall state=running enabled=yes
+
+# Reload shorewall
+  - name: Reload shorewall Config
+    service: name=shorewall state=restarted

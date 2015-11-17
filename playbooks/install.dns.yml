@@ -1,0 +1,6 @@
+---
+- name: Install Bind9 DNS Server
+  hosts: dns
+  tasks:
+  - include: ../tasks/install.dns.yml
+

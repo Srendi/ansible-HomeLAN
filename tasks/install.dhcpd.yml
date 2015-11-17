@@ -1,0 +1,17 @@
+---
+# Install ISC DHCP Deamon
+  - name: Update apt cache
+    apt: update_cache=yes cache_valid_time=3600
+# DHCPD
+  - name: Install ISC DHCP Daemon
+    apt: name=isc-dhcp-server state=present
+  - name: be sure isc-dhcp-server is running and enabled
+    service: name=isc-dhcp-server state=running enabled=yes
+# Configure Bird to blacklist spam addresses
+#  - name: Copy files/bird.conf into place
+#    copy: force=yes src=../files/bird.conf dest=/etc/bird/bird.conf owner=bird group=bird mode=0640
+#  - name: Bird RED IP
+#    lineinfile: dest=/etc/bird/bird.conf insertafter="^#router id" line="router id {{ red_ip }};"
+# Reload Bird
+  - name: Reload isc-dhcp-server Config
+    service: name=isc-dhcp-server state=restarted

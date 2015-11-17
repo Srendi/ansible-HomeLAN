@@ -1,0 +1,6 @@
+---
+- name: Install Squid Proxy Server
+  hosts: proxy
+  tasks:
+  - include: ../tasks/install.squid.yml
+

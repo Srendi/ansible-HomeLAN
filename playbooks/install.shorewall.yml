@@ -1,0 +1,6 @@
+---
+- name: Install Shorewall Firewall System
+  hosts: gateway
+  tasks:
+  - include: ../tasks/install.shorewall.yml
+

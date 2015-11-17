@@ -1,0 +1,17 @@
+---
+# Install BIND DNS Deamon and utils
+  - name: Update apt cache
+    apt: update_cache=yes cache_valid_time=3600
+
+    # bind9 dns
+  - name: Install BIND9 Daemon
+    apt: name=bind9 state=present
+  - name: Install BIND9 Utils
+    apt: name=bind9utils state=present
+
+  - name: be sure bind9 is running and enabled
+    service: name=bind9 state=running enabled=yes
+
+# Reload BIND9
+  - name: Reload Bind9 Config
+    service: name=bind9 state=restarted

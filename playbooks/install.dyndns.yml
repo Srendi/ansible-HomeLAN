@@ -1,0 +1,6 @@
+---
+- name: Install ez-ipupdate DynDNS Client
+  hosts: dyndns
+  tasks:
+  - include: ../tasks/install.dyndns.yml
+

@@ -16,5 +16,9 @@
 - include: playbooks/install.apachephp.yml
 - include: playbooks/install.blocklist.yml
 - include: playbooks/config.gateway.fw.yml
-
-
+- include: playbooks/install.dns.yml
+- include: playbooks/install.dhcpd.yml
+- include: playbooks/install.squid.yml
+- include: playbooks/install.shorewall.yml
+- include: playbooks/install.dyndns.yml
+- include: playbooks/install.openvpn.yml

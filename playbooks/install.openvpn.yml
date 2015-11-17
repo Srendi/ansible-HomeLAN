@@ -1,0 +1,6 @@
+---
+- name: Install OpenVPN Server and Tools
+  hosts: vpn
+  tasks:
+  - include: ../tasks/install.openvpn.yml
+

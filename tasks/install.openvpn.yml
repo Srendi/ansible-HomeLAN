@@ -1,0 +1,17 @@
+---
+# Install OpenVPN Server and Tools
+  - name: Update apt cache
+    apt: update_cache=yes cache_valid_time=3600
+
+    # OpenVPN
+  - name: Install OpenVPN Server
+    apt: name=openvpn state=present
+  - name: Install openvpn-blacklist
+    apt: name=openvpn-blacklist state=present
+    
+  - name: be sure openvpn is running and enabled
+    service: name=openvpn state=running enabled=yes
+
+# Reload ez-ipupdate
+  - name: Reload openvpn Config
+    service: name=openvpn state=restarted
