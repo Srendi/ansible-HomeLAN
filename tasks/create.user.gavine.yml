@@ -2,7 +2,6 @@
 # Create Standard Users
 - name: Create Group gavine
   group: name=gavine gid=1001 state=present
-
 - name: Create user gavine
   user: >
     name=gavine
@@ -17,4 +16,5 @@
     password={{ gavine_password }}
     update_password=always
     state=present
-#  no_log: True
+  no_log: True
+

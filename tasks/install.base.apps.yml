@@ -1,29 +1,29 @@
 ---
 # Update apt cache
-  - name: update apt cache
-    apt: update_cache=yes cache_valid_time=3600
+- name: update apt cache
+  apt: update_cache=yes cache_valid_time=3600
 # Install Base Apps
-  - name: Install whois
-    apt: name=whois state=present
-  - name: Install curl
-    apt: name=curl state=present
-  - name: Install hxwls
-    apt: name=html-xml-utils state=present
-  - name: Install mailutils
-    apt: name=mailutils state=present
-  - name: Install indicator-datetime
-    apt: name=indicator-datetime state=present
-  - name: Install dos2unix
-    apt: name=dos2unix state=present
-  - name: Install vim
-    apt: name=vim state=present
-  - name: Install lynx
-    apt: name=lynx state=present
-  - name: Install mutt
-    apt: name=mutt state=present
-  - name: Install git
-    apt: name=git state=present
-  - name: Install tofrodos
-    apt: name=tofrodos state=present    
-  - name: Install fail2ban
-    apt: name=fail2ban state=present    
+- name: Install whois
+  apt: name=whois state=present
+- name: Install curl
+  apt: name=curl state=present
+- name: Install hxwls
+  apt: name=html-xml-utils state=present
+- name: Install mailutils
+  apt: name=mailutils state=present
+- name: Install indicator-datetime
+  apt: name=indicator-datetime state=present
+- name: Install dos2unix
+  apt: name=dos2unix state=present
+- name: Install vim
+  apt: name=vim state=present
+- name: Install lynx
+  apt: name=lynx state=present
+- name: Install mutt
+  apt: name=mutt state=present
+- name: Install git
+  apt: name=git state=present
+- name: Install tofrodos
+  apt: name=tofrodos state=present    
+- name: Install fail2ban
+  apt: name=fail2ban state=present    

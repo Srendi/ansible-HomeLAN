@@ -1,6 +1,13 @@
 ---
 - name: Install Bind9 DNS Server
   hosts: dns
+  vars:
   tasks:
   - include: ../tasks/install.dns.yml
+
+  handlers:
+    - name: restart bind9
+      service: name=bind9 state=restarted
+    - name: reload bind9
+      service: name=bind9 state=reloaded
 

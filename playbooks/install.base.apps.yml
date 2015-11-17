@@ -1,8 +1,8 @@
 ---
 - name: Install base Apps
   hosts: all
-#  remote_user: root
+  vars:
   tasks:
   - include: ../tasks/install.base.apps.yml
 #  - include: ../tasks/create.user.rachellef.yml
-
+  handlers:

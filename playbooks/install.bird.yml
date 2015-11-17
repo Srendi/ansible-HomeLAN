@@ -1,6 +1,13 @@
 ---
 - name: Install BIRD Routing Deamon
   hosts: router
+  vars:
   tasks:
   - include: ../tasks/install.bird.yml
-
+      
+  handlers:
+  - name: restart bird
+    service: name=bird state=restarted
+  - name: reload bird
+    service: name=bird state=reloaded
+    

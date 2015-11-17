@@ -1,44 +1,40 @@
 ---
 # Update apt cache
-  - name: update apt cache
-    apt: update_cache=yes cache_valid_time=3600
+- name: update apt cache
+  apt: update_cache=yes cache_valid_time=3600
 # Install Gateway Firewall Apps
-  - name: Install ipset
-    apt: name=ipset state=present
+- name: Install ipset
+  apt: name=ipset state=present
 # Copy setip set script in
-  - name: Copy and chmod setip script
-    copy: src=/etc/ansible/files/create.fw.set.sh dest=/usr/local/bin/create.fw.set.sh force=yes owner=root group=root mode=0755
+- name: Copy and chmod setip script
+  copy: src=/etc/ansible/files/create.fw.set.sh dest=/usr/local/bin/create.fw.set.sh force=yes owner=root group=root mode=0755
 # Setup ipset
-  - name: Create ipset hash
-    shell: /usr/local/bin/create.fw.set.sh >> /var/log/ipsetlog creates=/var/log/ipsetlog 
+- name: Create ipset hash
+  shell: /usr/local/bin/create.fw.set.sh >> /var/log/ipsetlog creates=/var/log/ipsetlog 
 
-# Restore iptables
-  - name: Copy rc.local to /etc
-    copy: src=/etc/ansible/files/rc.local dest=/etc/rc.local force=yes owner=root group=root mode=0755
+# Restore iptables on startup
+- name: Copy rc.local to /etc
+  copy: src=/etc/ansible/files/rc.local dest=/etc/rc.local force=yes owner=root group=root mode=0755
 
 # IPTABLES
-  - name: IPTABLES Config
-    shell: /sbin/iptables -F INPUT
-  - name: IPTABLES Config 2
-    shell: /sbin/iptables -F OUTPUT
-  - name: IPTABLES Config 3
-    shell: /sbin/iptables -F FORWARD
-  - name: IPTABLES Config 4
-    shell: /sbin/iptables -I INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
-  - name: IPTABLES Config 5
-    shell: /sbin/iptables -I OUTPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
-  - name: IPTABLES Config 6
-    shell: /sbin/iptables -I FORWARD -m state --state RELATED,ESTABLISHED -j ACCEPT
-  - name: IPTABLES Config 7
-#    shell: /sbin/iptables -A INPUT -p all -m state --state NEW -m set --match-set blackholenets src -j DROP
-    shell: /sbin/iptables -A INPUT -m set --match-set blackholenets src -j DROP
-  - name: IPTABLES Config 8
-#    shell: /sbin/iptables -A OUTPUT -p all -m state --state NEW -m set --match-set blackholenets dst -j REJECT
-    shell: /sbin/iptables -A OUTPUT  -m set --match-set blackholenets dst -j DROP
-  - name: IPTABLES Config 9
-#    shell: /sbin/iptables -A FORWARD -p all -m state --state NEW -m set --match-set blackholenets dst -j DROP
-    shell: /sbin/iptables -A FORWARD -m set --match-set blackholenets dst -j DROP
-  - name: IPTABLES Config 10
-#    shell: /sbin/iptables -A FORWARD -p all -m state --state NEW -m set --match-set blackholenets src -j DROP
-    shell: /sbin/iptables -A FORWARD -m set --match-set blackholenets src -j DROP
+- name: IPTABLES Config
+  shell: /sbin/iptables -F INPUT
+- name: IPTABLES Config 2
+  shell: /sbin/iptables -F OUTPUT
+- name: IPTABLES Config 3
+  shell: /sbin/iptables -F FORWARD
+- name: IPTABLES Config 4
+  shell: /sbin/iptables -I INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
+- name: IPTABLES Config 5
+  shell: /sbin/iptables -I OUTPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
+- name: IPTABLES Config 6
+  shell: /sbin/iptables -I FORWARD -m state --state RELATED,ESTABLISHED -j ACCEPT
+- name: IPTABLES Config 7
+  shell: /sbin/iptables -A INPUT -m set --match-set blackholenets src -j DROP
+- name: IPTABLES Config 8
+  shell: /sbin/iptables -A OUTPUT  -m set --match-set blackholenets dst -j DROP
+- name: IPTABLES Config 9
+  shell: /sbin/iptables -A FORWARD -m set --match-set blackholenets dst -j DROP
+- name: IPTABLES Config 10
+  shell: /sbin/iptables -A FORWARD -m set --match-set blackholenets src -j DROP
 

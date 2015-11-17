@@ -1,6 +1,11 @@
 ---
 - name: Install OpenVPN Server and Tools
   hosts: vpn
+  vars:
   tasks:
   - include: ../tasks/install.openvpn.yml
-
+  handlers:
+    - name: restart openvpn
+      service: name=openvpn state=restarted
+    - name: reload openvpn
+      service: name=openvpn state=reloaded

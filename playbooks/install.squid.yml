@@ -1,6 +1,16 @@
 ---
 - name: Install Squid Proxy Server
   hosts: proxy
+  vars:
   tasks:
   - include: ../tasks/install.squid.yml
-
+    
+  handlers:
+    - name: restart squid3
+      service: name=squid3 state=restarted
+    - name: reload squid3
+      service: name=squid3 state=reloaded
+    -name: restart squid-deb-proxy
+      service: name=squid-deb-proxy state=restarted
+    - name: reload squid-deb-proxy
+      service: name=squid-deb-proxy state=reloaded

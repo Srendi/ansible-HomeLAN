@@ -1,4 +1,7 @@
 ---
 # Add Gavine's authorized key and subs key
-- name:
-  authorized_key: user=gavine key=https://www.dropbox.com/sh/mxnpeb8jrphxo8d/AAC72wKiur1S9pX22G8HU2twa/authorized_keys?dl=1
+- hosts: all
+  vars:
+  - name: install key
+    authorized_key: user=gavine key=https://www.dropbox.com/sh/mxnpeb8jrphxo8d/AAC72wKiur1S9pX22G8HU2twa/authorized_keys?dl=1
+  handlers:

@@ -10,7 +10,3 @@
     apt: name=shorewall-doc state=present  
   - name: Be sure shorewall is running and enabled
     service: name=shorewall state=running enabled=yes
-
-# Restart shorewall
-  - name: Reload shorewall Config
-    service: name=shorewall state=restarted

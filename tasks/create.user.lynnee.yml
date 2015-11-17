@@ -1,5 +1,6 @@
 ---
-# Create Standard users
+# Create Standard Users
+
 - name: Create Group lynnee
   group: name=lynnee gid=1004 state=present
 - name: Create user lynnee
@@ -16,5 +17,4 @@
     password={{ lynnee_password }}
     update_password=always
     state=present
-#  no_log: True
-
+  no_log: True

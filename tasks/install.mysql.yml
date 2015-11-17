@@ -1,0 +1,11 @@
+---
+# Install mysql
+
+  - name: install mysql-server
+    apt: name=mysql-server state=present
+  - name: install mysql-client
+    apt: name=mysql-client state=present
+  - name: install python-mysqldb
+    apt: name=python-mysqldb state=present  
+  - name: enable mysql
+    service: name=mysql state=running enabled=yes

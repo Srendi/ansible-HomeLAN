@@ -5,19 +5,23 @@
 # NTP
   - name: Install NTP
     apt: name=ntp state=present
-# Listen on green and Orange Subnets
+  - name: enable ntpd
+    service: name=ntp state=running enabled=yes
+
+  # Listen on green and Orange Subnets
   - name: NTP Listening on GREEN interface
     lineinfile: dest=/etc/ntp.conf insertafter="^#broadcast " line="broadcast {{ green_broadcast }}"
   - name: restart ntp
     service: name=ntp state=restarted
   - name: NTP Listening on ORANGE interface
     lineinfile: dest=/etc/ntp.conf insertafter="^#broadcast " line="broadcast {{ orange_broadcast }}"
-  - name: restart ntp
-    service: name=ntp state=restarted
+  notify:
+  - restart ntpd
+
 #  - name: be sure ntp is configured
 #    template: src=ntp.conf.j2 dest=/etc/ntp.conf
 #    notify:
 #      - restart ntp
-  - name: be sure ntpd is running and enabled
-    service: name=ntp state=running enabled=yes
+
+
 

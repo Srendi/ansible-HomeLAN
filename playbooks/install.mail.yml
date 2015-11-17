@@ -1,6 +1,11 @@
 ---
 - name: Install Mail System
   hosts: mail
+  vars:
   tasks:
   - include: ../tasks/install.mail.yml
-
+  handlers:
+    - name: restart postfix
+      service: name=postfix state=restarted
+    - name: reload postfix
+      service: name=postfix state=reloaded    

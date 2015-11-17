@@ -1,6 +1,12 @@
 ---
 - name: Install Shorewall Firewall System
-  hosts: gateway
+  hosts: firewall
+  vars:
   tasks:
   - include: ../tasks/install.shorewall.yml
+  handlers:
+    - name: restart shorewall
+      service: name=shorewall state=restarted
+    - name: reload shorewall
+      service: name=shorewall state=reloaded
 

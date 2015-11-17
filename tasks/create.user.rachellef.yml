@@ -1,5 +1,5 @@
 ---
-# Create Standard users
+# Create Standard Users
 - name: Create Group rachellef
   group: name=rachellef gid=1003 state=present
 - name: Create user rachellef
@@ -16,5 +16,5 @@
     password={{ rachellef_password }}
     update_password=always
     state=present
-#  no_log: True
+  no_log: True
 

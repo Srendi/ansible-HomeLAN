@@ -26,6 +26,4 @@
   - name: Be sure openvpn is running and enabled
     service: name=openvpn state=running enabled=yes
 
-# Reload OpenVPN
-  - name: Reload openvpn Config
-    service: name=openvpn state=restarted
+

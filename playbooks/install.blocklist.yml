@@ -1,6 +1,7 @@
 ---
 - name: Install Blocklist scripts	
-  hosts: gateway
+  hosts: firewall
+  vars:
   tasks:
   - include: ../tasks/blocklist.files.yml
-
+  handlers:

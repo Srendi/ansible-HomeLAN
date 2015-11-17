@@ -1,7 +1,18 @@
 ---
 - name: Install Apache2 PHP5
   hosts: web
-#  remote_user: root
+  vars:
   tasks:
   - include: ../tasks/install.apache2php5.yml
-
+    
+  handlers:
+    - name: enable apache2
+      service: name=apache2 state=running enabled=yes
+    - name: disable apache2
+      service: name=apache2 state=stopped enabled=no
+    - name: stop apache2
+      service: name=apache2 state=stopped
+      - name: restart apache2
+      service: name=apache2 state=restarted
+    - name: reload apache2
+      service: name=apache2 state=reloaded

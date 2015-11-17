@@ -1,41 +1,41 @@
 [local]
 127.0.0.1
 
-[ntpd]
-OneRing
-
-[gateway]
-OneRing
-
-[router]
-OneRing
-
 [ansible]
 OneRing
 
-[web]
+[antivirus]
 OneRing
 
 [database]
 OneRing
 
-[dns]
-OneRing
-
 [dhcp]
 OneRing
 
-[proxy]
+[dns]
 OneRing
 
 [dyndns]
 OneRing
 
-[vpn]
+[firewall]
 OneRing
 
 [mail]
 OneRing
 
-[antivirus]
+[ntpd]
+OneRing
+
+[proxy]
+OneRing
+
+[router]
+OneRing
+
+[vpn]
+OneRing
+
+[web]
 OneRing

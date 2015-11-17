@@ -1,6 +1,11 @@
 ---
 - name: Install isc-dhcp-server Deamon
   hosts: dhcp
+  vars:
   tasks:
   - include: ../tasks/install.dhcpd.yml
-
+  handlers:
+    - name: restart isc-dhcp-server
+      service: name=isc-dhcp-server state=restarted
+    - name: reload isc-dhcp-server
+      service: name=isc-dhcp-server state=reloaded

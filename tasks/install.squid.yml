@@ -19,7 +19,3 @@
     service: name=squid3 state=running enabled=yes
   - name: be sure squid-deb-proxy is running and enabled
     service: name=squid-deb-proxy state=running enabled=yes
-    
-# Reload BIND9
-  - name: Reload squid3 Config
-    service: name=squid3 state=restarted

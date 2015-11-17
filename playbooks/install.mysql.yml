@@ -1,0 +1,18 @@
+---
+- name: Install mysql System
+  hosts: database
+  vars:
+  tasks:
+  - include: ../tasks/install.mysql.yml
+
+  handlers:
+    - name: enable mysql
+      service: name=mysql state=running enabled=yes
+    - name: disable mysql
+      service: name=mysql state=stopped enabled=no
+    - name: stop mysql
+      service: name=mysql state=stopped
+    - name: restart mysql
+      service: name=mysql state=restarted
+    - name: reload mysql
+      service: name=mysql state=reloaded 

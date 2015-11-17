@@ -1,5 +1,6 @@
 ---
 # Install Mail Systems
+
   - name: Update apt cache
     apt: update_cache=yes cache_valid_time=3600
 
@@ -54,7 +55,7 @@
     apt: name=libsasl2-modules-sql state=present
   - name: Install libgsasl7
     apt: name=libgsasl7 state=present
-   - name: Install libauthen-sasl-cyrus-perl
+  - name: Install libauthen-sasl-cyrus-perl
     apt: name=libauthen-sasl-cyrus-perl state=present
   - name: Install sasl2-bin
     apt: name=sasl2-bin state=present
@@ -68,13 +69,10 @@
     apt: name=roundcube-mysql state=present
   - name: Install roundcube-plugins
     apt: name=roundcube-plugins state=present
-     - name: Install roundcube-plugins-extra
+  - name: Install roundcube-plugins-extra
     apt: name=roundcube-plugins-extra state=present
     
-# Restart Mail
-  - name: Restart postfix Config
-    service: name=postfix state=restarted
-    
+
 
 
     

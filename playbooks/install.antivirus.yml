@@ -1,6 +1,19 @@
 ---
 - name: Install AntiVirus System
   hosts: antivirus
+  vars:
   tasks:
   - include: ../tasks/install.antivirus.yml
-
+  handlers:
+  - name: reload clamassassin
+    service: name=clamassassin state=reloaded
+  - name: reload clamav-daemon
+    service: name=clamav-daemon state=reloaded
+  - name: reload dansguardian
+    service: name=dansguardian state=reloaded
+  - name: restart clamassassin
+    service: name=clamassassin state=restarted
+  - name: restart clamav-daemon
+    service: name=clamav-daemon state=restarted
+  - name: restart dansguardian
+    service: name=dansguardian state=restarted

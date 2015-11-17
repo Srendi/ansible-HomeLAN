@@ -1,8 +1,14 @@
 ---
 - name: Install NTPD
   hosts: ntpd
+  vars:
 #  remote_user: root
   tasks:
   - include: ../tasks/install.ntpd.yml
 #  - include: ../tasks/create.user.rachellef.yml
 
+  handlers:
+    - name: restart ntpd
+      service: name=ntpd state=restarted
+    - name: reload ntpd
+      service: name=ntpd state=reloaded

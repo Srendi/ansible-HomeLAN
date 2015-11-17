@@ -1,6 +1,11 @@
 ---
 - name: Install ez-ipupdate DynDNS Client
   hosts: dyndns
+  vars:
   tasks:
   - include: ../tasks/install.dyndns.yml
-
+  handlers:
+    - name: restart ez-ipupdate
+      service: name=ez-ipupdate state=restarted
+    - name: reload ez-ipupdate
+      service: name=ez-ipupdate state=reloaded
