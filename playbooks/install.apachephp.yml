@@ -1,0 +1,7 @@
+---
+- name: Install Apache2 PHP5
+  hosts: web
+#  remote_user: root
+  tasks:
+  - include: ../tasks/install.apache2php5.yml
+

@@ -1,0 +1,8 @@
+---
+- name: Install NTPD
+  hosts: ntpd
+#  remote_user: root
+  tasks:
+  - include: ../tasks/install.ntpd.yml
+#  - include: ../tasks/create.user.rachellef.yml
+

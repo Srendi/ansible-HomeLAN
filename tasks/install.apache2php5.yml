@@ -1,0 +1,46 @@
+---
+# Install LAMP
+  - name: Update apt cache
+    apt: update_cache=yes cache_valid_time=3600
+
+  - name: Install apache2 software
+    apt: name=apache2 state=present
+
+  - name: Install apache2 Docs
+    apt: name=apache2-doc state=present
+
+  - name: Install mysql-server software
+    apt: name=mysql-server state=present
+
+  - name: Install php5-mysql software
+    apt: name=php5-mysql state=present
+
+  - name: Install php5 software
+    apt: name=php5 state=present
+
+  - name: Install libapache2-mod-php5 software
+    apt: name=libapache2-mod-php5 state=present
+
+  - name: Install php5-mcrypt software
+    apt: name=php5-mcrypt state=present
+
+  - name: Install python-mysqldb software
+    apt: name=python-mysqldb state=present
+
+  - name: Install phpmyadmin
+    apt: name=phpmyadmin state=present
+
+# Enable and start services
+# enables the Apache2 module "ssl"
+  - apache2_module: state=present name=ssl
+# ENables default ssl site
+  - name: Enable Apache 2 default ssl site
+    shell: a2ensite default-ssl
+  - name: Enable apache2
+    service: name=apache2 state=running enabled=yes
+  - name: Enable mysql
+    service: name=mysql state=running enabled=yes
+
+  - name: restart Apache
+    service: name=apache2 state=restarted
+

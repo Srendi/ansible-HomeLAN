@@ -1,0 +1,7 @@
+---
+- name: Add Authorized Keys
+  hosts: all
+#  remote_user: root
+  tasks:
+  - include: ../tasks/add.authorized.keys.yml
+

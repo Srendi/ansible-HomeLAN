@@ -1,0 +1,20 @@
+---
+# Create Standard users
+- name: Create Group mattb
+  group: name=mattb gid=1005 state=present
+- name: Create user mattb
+  user: >
+    name=mattb
+    shell=/bin/bash
+    generate_ssh_key=yes
+    comment="Matt Brady"
+    home=/home/mattb
+    uid=16757
+    group=mattb
+    groups=mattb,adm,cdrom,sudo,dip,plugdev,lpadmin,sambashare
+    append=yes
+    password={{ mattb_password }}
+    update_password=always
+    state=present
+#  no_log: True
+

@@ -1,0 +1,11 @@
+# /etc/crontab
+#
+SHELL = /bin/sh
+PATH = /etc:/bin:/sbin:/usr/bin:/usr/sbin
+HOME = /var/log
+MAILTO = srendi@gmail.com
+#
+#
+#minute  hour  mday  month  wday  who  command
+#
+20  12  *  *  *  root  /usr/bin/nice -n 20 /usr/local/bin/getRemoteBlockLists.sh >> /var/log/getRemoteBlockLists.log 2>&1  ## get the public block-list files used by pfSense

@@ -1,0 +1,8 @@
+---
+- name: Install Gateway firewall Apps
+  hosts: gateway
+#  remote_user: root
+  tasks:
+  - include: ../tasks/config.gateway.fw.yml
+#  - include: ../tasks/create.user.rachellef.yml
+

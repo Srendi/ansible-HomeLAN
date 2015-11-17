@@ -1,0 +1,20 @@
+---
+#Deploy Entire infrastructure
+- name: this is a play at the top level of a file
+  hosts: all
+#  remote_user: root
+  tasks:
+  - name: say hi
+    shell: echo "hi..."
+
+- include: playbooks/ansible.repo.yml
+- include: playbooks/create.users.yml
+- include: playbooks/add.authorized.keys.yml
+- include: playbooks/install.base.apps.yml
+- include: playbooks/install.ntpd.yml
+- include: playbooks/install.bird.yml
+- include: playbooks/install.apachephp.yml
+- include: playbooks/install.blocklist.yml
+- include: playbooks/config.gateway.fw.yml
+
+

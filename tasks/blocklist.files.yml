@@ -1,0 +1,40 @@
+---
+# Create Blocklist directories
+- name: Setup /var/BlockLists
+  file: path=/var/BlockLists owner=root group=root state=directory mode=0755
+- name: Setup /var/www/html/BlockLists
+  file: path=/var/www/html/BlockLists owner=root group=root state=directory mode=0755
+- name: Setup /var/www/html/BlockLists/Previous
+  file: path=/var/www/html/BlockLists/Previous owner=root group=root state=directory mode=0755
+
+- name: Create Logfile /var/log/getRemoteBlockLists.log
+  file: path=/var/log/getRemoteBlockLists.log owner=root group=root state=touch mode=0666
+
+# Copy IPrangeToCIDRfromSTDIN.php to /usr/local/bin
+- name: Copy Converter
+  copy: > 
+    force=yes
+    src=/etc/ansible/files/IPrangeToCIDRfromSTDIN.php
+    dest=/usr/local/bin/IPrangeToCIDRfromSTDIN.php
+    owner=root
+    group=root
+    mode=0755
+- name: CopygetRemoteBlocklists to /usr/local/bin
+  copy: >
+    force=yes
+    src=/etc/ansible/files/getRemoteBlockLists.sh
+    dest=/usr/local/bin/getRemoteBlockLists.sh
+    owner=root
+    group=root
+    mode=0755
+- name: checkBlockfileValidation.sh to /usr/local/bin 
+  copy: >
+    force=yes
+    src=/etc/ansible/files/checkBlockfileValidation.sh
+    dest=/usr/local/bin/checkBlockfileValidation.sh
+    owner=root
+    group=root
+    mode=0755
+# Add cron entry
+- cron: name="update blocklists" day="*" hour="2" minute="7"
+    state="present" user="root" job="/usr/bin/nice -n 20 /usr/local/bin/getRemoteBlockLists.sh && /usr/local/bin/create.fw.set.sh >> /var/log/getRemoteBlockLists.log 2>&1"

@@ -1,0 +1,20 @@
+---
+# Create Standard Users
+- name: Create Group gavine
+  group: name=gavine gid=1001 state=present
+
+- name: Create user gavine
+  user: >
+    name=gavine
+    shell=/bin/bash
+    comment="Gavin Ellis"
+    generate_ssh_key=yes
+    home=/home/gavine
+    uid=16753
+    group=gavine
+    groups=gavine,adm,cdrom,sudo,dip,plugdev,lpadmin,sambashare
+    append=yes
+    password={{ gavine_password }}
+    update_password=always
+    state=present
+#  no_log: True

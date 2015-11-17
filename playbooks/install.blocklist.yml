@@ -1,0 +1,6 @@
+---
+- name: Install Blocklist scripts	
+  hosts: gateway
+  tasks:
+  - include: ../tasks/blocklist.files.yml
+

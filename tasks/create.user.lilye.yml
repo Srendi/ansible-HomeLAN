@@ -1,0 +1,20 @@
+---
+# Create Standard users
+- name: Create Group lilye
+  group: name=lilye gid=1002 state=present
+- name: Create user lilye
+  user: >
+    name=lilye
+    shell=/bin/bash
+    generate_ssh_key=yes
+    comment="Lily Ellis"
+    home=/home/lilye
+    uid=16754
+    group=lilye
+    groups=lilye,adm,cdrom,sudo,dip,plugdev,lpadmin,sambashare
+    append=yes
+    password={{ lilye_password }}
+    update_password=always
+    state=present
+#  no_log: True
+

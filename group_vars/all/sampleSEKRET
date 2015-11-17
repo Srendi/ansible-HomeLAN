@@ -1,0 +1,4 @@
+# Secret variables 
+# Example line for variable called from tasks/create.user.username.yml
+# username_password: password hash generated with mkpasswd -m sha-512
+# bobjones_password: sfvmvoerakve3e3q[5bvgkr9kvgq5kkrv03r0v3k4gkrg93rg
