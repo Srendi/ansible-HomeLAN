@@ -2,40 +2,40 @@
 127.0.0.1
 
 [ansible]
-OneRing
+OneRing.home
 
 [antivirus]
-OneRing
+OneRing.home
 
 [database]
-OneRing
+OneRing.home
 
 [dhcp]
-OneRing
+OneRing.home
 
 [dns]
-OneRing
+OneRing.home
 
 [dyndns]
-OneRing
+OneRing.home
 
 [firewall]
-OneRing
+OneRing.home
 
 [mail]
-OneRing
+OneRing.home
 
 [ntpd]
-OneRing
+OneRing.home
 
 [proxy]
-OneRing
+OneRing.home
 
 [router]
-OneRing
+OneRing.home
 
 [vpn]
-OneRing
+OneRing.home
 
 [web]
-OneRing
+OneRing.home

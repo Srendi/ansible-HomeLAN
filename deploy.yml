@@ -4,8 +4,8 @@
   hosts: all
 #  remote_user: root
   tasks:
-  - name: say hi
-    shell: echo "hi..."
+  - name: update apt cache 
+    apt: update_cache=yes cache_valid_time=3600
 
 - include: playbooks/ansible.repo.yml
 - include: playbooks/create.users.yml

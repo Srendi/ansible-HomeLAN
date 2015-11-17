@@ -27,10 +27,10 @@
 - name: enable apache2 module ssl
   apache2_module: state=present name=ssl
   notify:
-  - restart apache
+  - restart apache2
 # Enables default ssl site
 - name: a2ensite default-ssl
   shell: a2ensite default-ssl
   notify:
-  - reload apache
+  - reload apache2
 

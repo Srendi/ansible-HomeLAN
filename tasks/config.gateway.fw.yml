@@ -9,6 +9,8 @@
 - name: Copy and chmod setip script
   copy: src=/etc/ansible/files/create.fw.set.sh dest=/usr/local/bin/create.fw.set.sh force=yes owner=root group=root mode=0755
 # Setup ipset
+- name: save ipset
+  shell: /sbin/ipset save blackholenets -f /etc/ansible/files/ipset.hash.net
 - name: Create ipset hash
   shell: /usr/local/bin/create.fw.set.sh >> /var/log/ipsetlog creates=/var/log/ipsetlog 
 
@@ -32,7 +34,7 @@
 - name: IPTABLES Config 7
   shell: /sbin/iptables -A INPUT -m set --match-set blackholenets src -j DROP
 - name: IPTABLES Config 8
-  shell: /sbin/iptables -A OUTPUT  -m set --match-set blackholenets dst -j DROP
+  shell: /sbin/iptables -A OUTPUT -m set --match-set blackholenets dst -j DROP
 - name: IPTABLES Config 9
   shell: /sbin/iptables -A FORWARD -m set --match-set blackholenets dst -j DROP
 - name: IPTABLES Config 10
