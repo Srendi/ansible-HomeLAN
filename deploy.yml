@@ -22,3 +22,6 @@
 - include: playbooks/install.shorewall.yml
 - include: playbooks/install.dyndns.yml
 - include: playbooks/install.openvpn.yml
+- include: playbooks/install.antivirus.yml
+- include: playbooks/install.mail.yml
+- include: playbooks/install.mysql.yml
