@@ -8,10 +8,24 @@
     apt: name=openvpn state=present
   - name: Install openvpn-blacklist
     apt: name=openvpn-blacklist state=present
+  - name: Install easy-rsa
+    apt: name=easy-rsa state=present
+  - name: Install eurephia
+    apt: name=eurephia state=present
+  - name: Install openvpn-auth-ldap
+    apt: name=openvpn-auth-ldap state=present
+  - name: Install openvpn-auth-radius
+    apt: name=openvpn-auth-radius state=present
+  - name: Install network-manager-openvpn-gnome
+    apt: name=network-manager-openvpn-gnome state=present
+  - name: Install tunneldigger
+    apt: name=tunneldigger state=present
+  - name: Install tunneldigger-utils
+    apt: name=tunneldigger-utils state=present
     
-  - name: be sure openvpn is running and enabled
+  - name: Be sure openvpn is running and enabled
     service: name=openvpn state=running enabled=yes
 
-# Reload ez-ipupdate
+# Reload OpenVPN
   - name: Reload openvpn Config
     service: name=openvpn state=restarted
