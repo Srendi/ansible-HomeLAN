@@ -1,0 +1,17 @@
+---
+# tasks file for install.dns.role
+# Install BIND DNS Deamon and utils
+- name: Update apt cache
+  apt: update_cache=yes cache_valid_time=3600
+  # bind9 dns
+- name: install bind9
+  apt: name=bind9 state=present
+- name: install bind9utils
+  apt: name=bind9utils state=present
+  
+# Enable google as a fallback forwarder
+- name: copy named.conf.options
+  copy: src=named.conf.options /etc/bind/named.conf.options owner=root group=bind mode="u=rw,g=r,o=r" backup=yes
+
+- name: be sure bind9 is running and enabled
+  service: name=bind9 state=running enabled=yes

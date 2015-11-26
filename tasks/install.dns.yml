@@ -8,6 +8,9 @@
     apt: name=bind9 state=present
   - name: install bind9utils
     apt: name=bind9utils state=present
+  # Enable google as a fallback forwarder
+ # - name: template named.conf.options
+ #   template: src=/etc/ansible/foo.j2 dest=/etc/file.conf owner=bin group=wheel mode="u=rw,g=r,o=r"
   - name: be sure bind9 is running and enabled
     service: name=bind9 state=running enabled=yes
 

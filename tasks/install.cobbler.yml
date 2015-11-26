@@ -1,0 +1,55 @@
+---
+# Install Cobbler Provisioning service and utils
+
+# Add the Cobbler repo and repo key for 15.04
+  - name: add repo key
+    apt_key:url=http://download.opensuse.org/repositories/home:/libertas-ict:/cobbler26/xUbuntu_15.04/Release.key state=present
+  - name: add repo
+    apt_repository: repo="deb http://download.opensuse.org/repositories/home:/libertas-ict:/cobbler26/xUbuntu_15.04/ ./" state=present update_cache=yes
+  
+  - name: Update apt cache
+    apt: update_cache=yes cache_valid_time=3600
+
+    # Prereqs
+  - name: install mkisofs #genisoimage
+    apt: name=genisoimage state=present
+  - name: install createrepo
+    apt: name=createrepo state=present
+  - name: install libapache2-mod-wsgi 
+    apt: name=libapache2-mod-wsgi  state=present
+# libapache2-mod-wsgi missing?
+  - name: install python-cheetah
+    apt: name=python-cheetah state=present
+  - name: install python-netaddr
+    apt: name=python-netaddr state=present
+  - name: install python-simplejson
+    apt: name=python-simplejson state=present
+  - name: install python-urlgrabber
+    apt: name=python-urlgrabber state=present
+  - name: install python-yaml
+    apt: name=python-yaml state=present
+  - name: install rsync
+    apt: name=rsync state=present
+  - name: install syslinux
+    apt: name=syslinux state=present
+  - name: install atftpd 
+    apt: name=atftpd  state=present
+  - name: install yum-utils
+    apt: name=yum-utils state=present
+  - name: install python-django
+    apt: name=python-django state=present
+  - name: install cobbler
+    apt: name=cobbler state=present
+
+    - name: install cobbler-web
+    apt: name=cobbler-web state=present
+  - name: install rsync
+    apt: name=rsync state=present
+  - name: install rsync
+    apt: name=rsync state=present
+
+
+    
+  - name: be sure bind9 is running and enabled
+    service: name=bind9 state=running enabled=yes
+

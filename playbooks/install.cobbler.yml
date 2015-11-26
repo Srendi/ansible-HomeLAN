@@ -1,0 +1,13 @@
+---
+- name: Install cobbler Server
+  hosts: cobbler
+  vars:
+  tasks:
+  - include: ../tasks/install.cobbler.yml
+
+  handlers:
+    - name: restart cobbler
+      service: name=cobbler state=restarted
+    - name: reload cobbler
+      service: name=cobbler state=reloaded
+
