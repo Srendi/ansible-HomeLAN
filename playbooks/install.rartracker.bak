@@ -1,6 +1,0 @@
----
-- name: Install BIRD Routing Deamon
-  hosts: router
-  tasks:
-  - include: ../tasks/install.bird.yml
-
