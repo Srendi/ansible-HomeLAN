@@ -1,8 +1,0 @@
----
-- name: Install dev Apps
-  hosts: all
-#  remote_user: root
-  tasks:
-  - include: ../tasks/install.dev.apps.yml
-
-
