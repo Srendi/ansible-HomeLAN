@@ -1,0 +1,14 @@
+---
+# Update apt cache
+  - name: update apt cache
+    apt: update_cache=yes cache_valid_time=3600
+# Install Base Apps
+  - name: Install nodejs
+    apt: name=nodejs state=present
+  - name: Install git-core
+    apt: name=git-core state=present
+# Install modules from npm
+  - name: Install bower
+    npm: name=bower global=yes
+  - name: Install gulp-cli
+    npm: name=gulp-cli global=yes

@@ -42,7 +42,7 @@
     name: rewrite
     
 #### Do this
-#### change AllowOverride from "None" to "All" in httpd.conf
+#####change AllowOverride from "None" to "All" in httpd.conf
    
     
 # Enable and start services

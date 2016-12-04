@@ -1,4 +1,4 @@
 ---
 # Add Gavine's authorized key and subs key
-- name: install key
+- name:
   authorized_key: user=gavine key=https://www.dropbox.com/sh/mxnpeb8jrphxo8d/AAC72wKiur1S9pX22G8HU2twa/authorized_keys?dl=1

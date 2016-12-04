@@ -10,10 +10,8 @@
 # Configure Bird to blacklist spam addresses
   - name: Copy files/bird.conf into place
     copy: force=yes src=../files/bird.conf dest=/etc/bird/bird.conf owner=bird group=bird mode=0640
-    notify:
-    - restart bird
   - name: Bird RED IP
     lineinfile: dest=/etc/bird/bird.conf insertafter="^#router id" line="router id {{ red_ip }};"
-    notify:
-    - restart bird
-
+# Reload Bird
+  - name: Reload bird Config
+    service: name=bird state=restarted

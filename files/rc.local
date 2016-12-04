@@ -11,8 +11,8 @@
 #
 # By default this script does nothing.
 
-/sbin/ipset restore -f /etc/ansible/files/ipset.hash.net
 /sbin/iptables-restore /etc/network/iptables.up.rules
+/usr/local/bin/create.fw.set.sh 
 /usr/bin/nice -n 20 /usr/local/bin/getRemoteBlockLists.sh >> /var/log/getRemoteBlockLists.log 2>&1
 /usr/local/bin/create.fw.set.sh
 

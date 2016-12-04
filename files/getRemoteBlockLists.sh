@@ -244,33 +244,33 @@ fi
 echo "" >> $LOGFILE
 
 
-#FILENAME='BluetackL2P2PList'
-#echo `dateTime`"Getting $FILENAME ..." >> $LOGFILE
-#/usr/bin/curl -LsS \
-#  "http://list.iblocklist.com/?list=gyisgnzbhppbvsphucsw&fileformat=p2p&archiveformat=gz" \
-#  2>>$LOGFILE \
-#  | /bin/gunzip \
-#  | /bin/sed -e '/^#/d' -e '/^$/d' -e 's/^.*://' -e 's/\-/ /' \
-#  | $CIDRDIR/IPrangeToCIDRfromSTDIN.php \
-#  | /bin/sed -e '/^$/d' \
-#  | /usr/bin/sort -u -n -t . -k 1,1 -k 2,2 -k 3,3 -k 4,4 \
-#  > /tmp/${FILENAME}.txt-$$
+FILENAME='BluetackL2P2PList'
+echo `dateTime`"Getting $FILENAME ..." >> $LOGFILE
+/usr/bin/curl -LsS \
+  "http://list.iblocklist.com/?list=gyisgnzbhppbvsphucsw&fileformat=p2p&archiveformat=gz" \
+  2>>$LOGFILE \
+  | /bin/gunzip \
+  | /bin/sed -e '/^#/d' -e '/^$/d' -e 's/^.*://' -e 's/\-/ /' \
+  | $CIDRDIR/IPrangeToCIDRfromSTDIN.php \
+  | /bin/sed -e '/^$/d' \
+  | /usr/bin/sort -u -n -t . -k 1,1 -k 2,2 -k 3,3 -k 4,4 \
+  > /tmp/${FILENAME}.txt-$$
 #
-#if test -s /tmp/${FILENAME}.txt-$$ -a \
-#        "`/bin/cat /tmp/${FILENAME}.txt-$$ | \
-#          /bin/sed -E -e '/^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+\/[0-9]+$/d' \
-#                    -e '/^$/d'`" = ""
-#then
-#  /bin/mv -f ${SERVERDIR}/${FILENAME}.txt ${SERVERDIR}/Previous/${FILENAME}.txt
-#  /bin/mv -f /tmp/${FILENAME}.txt-$$ ${SERVERDIR}/${FILENAME}.txt
-#  /bin/chown www-data:www-data ${SERVERDIR}/${FILENAME}.txt
-#  /bin/chmod 660 ${SERVERDIR}/${FILENAME}.txt
-#else
-#  MESSAGE="${MESSAGE}\n/tmp/${FILENAME}.txt-$$ did not validate & was skipped"
-#  echo "/tmp/${FILENAME}.txt-$$ did not validate -- update skipped" >> $LOGFILE
-#fi
+if test -s /tmp/${FILENAME}.txt-$$ -a \
+        "`/bin/cat /tmp/${FILENAME}.txt-$$ | \
+          /bin/sed -E -e '/^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+\/[0-9]+$/d' \
+                    -e '/^$/d'`" = ""
+then
+  /bin/mv -f ${SERVERDIR}/${FILENAME}.txt ${SERVERDIR}/Previous/${FILENAME}.txt
+  /bin/mv -f /tmp/${FILENAME}.txt-$$ ${SERVERDIR}/${FILENAME}.txt
+  /bin/chown www-data:www-data ${SERVERDIR}/${FILENAME}.txt
+  /bin/chmod 660 ${SERVERDIR}/${FILENAME}.txt
+else
+  MESSAGE="${MESSAGE}\n/tmp/${FILENAME}.txt-$$ did not validate & was skipped"
+  echo "/tmp/${FILENAME}.txt-$$ did not validate -- update skipped" >> $LOGFILE
+fi
 #
-#echo "" >> $LOGFILE
+echo "" >> $LOGFILE
 
 
 FILENAME='BluetackFspammerList'

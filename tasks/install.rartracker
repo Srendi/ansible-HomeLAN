@@ -1,0 +1,67 @@
+---
+# Install Install RarTracker CouchPotato Friendly Torrent Tracker
+# RarTracker
+  - name: Install RarTracker
+  - git:
+    repo: 'https://github.com/Srendi/rartracker.git'
+    dest: /srv/projects
+    clone: yes
+    update: no
+    
+# In project directory... npm install
+#  - name: Install package.json
+#    npm: global=no path=/srv/projects/rartracker
+- shell: npm install
+  args:
+    chdir: /srv/projects/rartracker
+# And... npm run dist
+- shell: npm run dist
+  args:
+    chdir: /srv/projects/rartracker
+# Import /srv/projects/rartracker/database/database.sql
+- name: Import file.sql similar to mysql -u <username> -p <password> < hostname.sql
+  mysql_db:
+    state: import
+    name: all
+    target: /srv/projects/rartracker/database/database.sql
+
+# Configure rartracker/api/secrets.php
+  - name: Copy files/Secrets.php into place
+    copy: force=yes src=../files/Secrets.php dest=/srv/Projects/rartracker/api/Secrets.php owner=rartracker
+# Configure rartracker/api/User.php
+  - name: Copy files/User.php into place
+    copy: force=yes src=../files/User.php dest=/srv/Projects/rartracker/api/User.php owner=rartracker 
+# Configure rartracker/api/Config.php
+  - name: Copy files/Config.php into place
+    copy: force=yes src=../files/Config.php dest=/srv/Projects/rartracker/api/Config.php owner=rartracker
+# Configure rartracker/app/app.config.js
+  - name: Copy files/app.config.js into place
+    copy: force=yes src=../files/app.config.js dest=/srv/Projects/rartracker/app/app.config.js owner=rartracker
+
+# Create needed directories    
+- name: Creates directory
+  file: path=/srv/Projects/rartracker/torrents state=directory mode=0755 owner=rartracker group=rartracker
+- name: Creates directory
+  file: path=/srv/Projects/rartracker/subs state=directory mode=0755 owner=rartracker group=rartracker
+- name: Creates directory
+  file: path=/srv/Projects/rartracker/img state=directory mode=0755 owner=rartracker group=rartracker
+- name: Creates directory
+  file: path=/srv/Projects/rartracker/img/imdb state=directory mode=0755 owner=rartracker group=rartracker
+  
+# Update RarTracker
+  - name: Update RarTracker
+  - git:
+    repo: 'https://github.com/Srendi/rartracker.git'
+    dest: /srv/projects
+    clone: no
+    update: yes  
+  - name: Be sure RarTracker is running and enabled
+    service: name=rartracker state=running enabled=yes
+# Configure rartracker
+#  - name: Copy files/rartracker.conf into place
+#    copy: force=yes src=../files/rartracker.conf dest=/etc/rartracker/rartracker.conf owner=rartracker group=rartracker mode=0640
+#  - name: RarTracker RED IP
+#    lineinfile: dest=/etc/rartracker/rartracker.conf insertafter="^#router id" line="router id {{ red_ip }};"
+# Reload RarTracker
+  - name: Reload rartracker Config
+    service: name=rartracker state=restarted

@@ -16,6 +16,7 @@
 - include: playbooks/install.apachephp.yml
 - include: playbooks/install.blocklist.yml
 - include: playbooks/config.gateway.fw.yml
+- include: playbooks/install.mariadb.yml
 - include: playbooks/install.rartracker.yml
 
 

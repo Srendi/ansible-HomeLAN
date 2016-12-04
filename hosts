@@ -1,44 +1,21 @@
 [local]
 127.0.0.1
 
-[ansible]
-OneRing.home
-
-[antivirus]
-OneRing.home
-
-[cobbler]
-OneRing.home
-
-[database]
-OneRing.home
-
-[dhcp]
-OneRing.home
-
-[dns]
-OneRing.home
-
-[dyndns]
-OneRing.home
-
-[firewall]
-OneRing.home
-
-[mail]
-OneRing.home
-
 [ntpd]
-OneRing.home
+OneRing
 
-[proxy]
-OneRing.home
+[gateway]
+OneRing
 
 [router]
-OneRing.home
+OneRing
 
-[vpn]
-OneRing.home
+[ansible]
+OneRing
 
 [web]
-OneRing.home
+OneRing
+
+[rartracker]
+OneRing
+

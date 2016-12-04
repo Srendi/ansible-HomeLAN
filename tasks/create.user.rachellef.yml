@@ -1,5 +1,5 @@
 ---
-# Create Standard Users
+# Create Standard users
 - name: Create Group rachellef
   group: name=rachellef gid=1003 state=present
 - name: Create user rachellef
@@ -13,8 +13,8 @@
     group=rachellef
     groups=rachellef,adm,cdrom,sudo,dip,plugdev,lpadmin,sambashare
     append=yes
-    password={{ rachellef_password }}
+    password=$6$G3dLnnWUjHOh.Dva$ljTGoQ18hfsrMebumHOOS5tRF5NqJIcIpg5n1/LO8EaesgpUkAkfGqQbPrfW/oz9HDdT/.x3qvvWWiYilu8lT0
     update_password=always
     state=present
-  no_log: True
+#  no_log: True
 

@@ -2,6 +2,7 @@
 # Create Standard Users
 - name: Create Group gavine
   group: name=gavine gid=1001 state=present
+
 - name: Create user gavine
   user: >
     name=gavine
@@ -13,8 +14,7 @@
     group=gavine
     groups=gavine,adm,cdrom,sudo,dip,plugdev,lpadmin,sambashare
     append=yes
-    password={{ gavine_password }}
+    password=$6$heCLf7Ds$QGaumk0sFq2wlQ5vkCqEc0v/TF0.CCrGo3r..XH7TThYCgTNhKnaoJFLJ0XYZHQL1cKIkkrbBa1YRosDmTSc0/
     update_password=always
     state=present
-  no_log: True
-
+#  no_log: True

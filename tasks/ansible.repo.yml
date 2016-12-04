@@ -1,25 +1,46 @@
 ---
 # Create Ansible repo directories
-  - name: Setup /etc/ansible/playbooks
-    file: path=/etc/ansible/playbooks owner=root group=root state=directory mode=0755
-    
-  - name: Setup /etc/ansible/roles
-    file: path=/etc/ansible/roles owner=root group=root state=directory mode=0755
+- name: Setup /etc/ansible/playbooks
+  file: path=/etc/ansible/playbooks owner=root group=root state=directory mode=0755
+- name: Setup /etc/ansible/roles
+  file: path=/etc/ansible/roles owner=root group=root state=directory mode=0755
+- name: Setup /etc/ansible/roles/role.BASE/defaults
+  file: path=/etc/ansible/roles/role.BASE/defaults owner=root group=root state=directory mode=0755 recurse=yes
+- name: Setup /etc/ansible/roles/role.BASE/files
+  file: path=/etc/ansible/roles/role.BASE/files owner=root group=root state=directory mode=0755 recurse=yes
+- name: Setup /etc/ansible/roles/role.BASE/handlers
+  file: path=/etc/ansible/roles/role.BASE/handlers owner=root group=root state=directory mode=0755 recurse=yes
+- name: Setup /etc/ansible/roles/role.BASE/meta
+  file: path=/etc/ansible/roles/role.BASE/meta owner=root group=root state=directory mode=0755 recurse=yes
+- name: Setup /etc/ansible/roles/role.BASE/tasks
+  file: path=/etc/ansible/roles/role.BASE/tasks owner=root group=root state=directory mode=0755 recurse=yes
+- name: Setup /etc/ansible/roles/role.BASE/templates
+  file: path=/etc/ansible/roles/role.BASE/templates owner=root group=root state=directory mode=0755 recurse=yes
+- name: Setup /etc/ansible/roles/role.BASE/tests
+  file: path=/etc/ansible/roles/role.BASE/tests owner=root group=root state=directory mode=0755 recurse=yes
+- name: Setup /etc/ansible/roles/role.BASE/vars
+  file: path=/etc/ansible/roles/role.BASE/vars owner=root group=root state=directory mode=0755 recurse=yes
+- name: Setup /etc/ansible/host_vars
+  file: path=/etc/ansible/host_vars owner=root group=root state=directory mode=0755
+- name: Setup /etc/ansible/group_vars
+  file: path=/etc/ansible/group_vars owner=root group=root state=directory mode=0755
+- name: Setup /etc/ansible/group_vars/all
+  file: path=/etc/ansible/group_vars/all owner=root group=root state=directory mode=0755
 
-  - name: Setup /etc/ansible/host_vars
-    file: path=/etc/ansible/host_vars owner=root group=root state=directory mode=0755
-    
-  - name: Setup /etc/ansible/group_vars
-    file: path=/etc/ansible/group_vars owner=root group=root state=directory mode=0755
-    
-  - name: Setup /etc/ansible/group_vars/all
-    file: path=/etc/ansible/group_vars/all owner=root group=root state=directory mode=0755
+- name: Create /etc/ansible/group_vars/all/config
+  file: path=/etc/ansible/group_vars/all/config owner=root group=root state=touch mode=0644
+- name: Create /etc/ansible/group_vars/all/secret
+  file: path=/etc/ansible/group_vars/all/secret owner=root group=root state=touch mode=0644
 
-  - name: Create /etc/ansible/group_vars/all/config
-    file: path=/etc/ansible/group_vars/all/config owner=root group=root state=touch mode=0644
-    
-  - name: Create /etc/ansible/group_vars/all/secret
-    file: path=/etc/ansible/group_vars/all/secret owner=root group=root state=touch mode=0644
-    
-
-
+# Create Ansible Repo Default Files
+- name: Create /etc/ansible/roles/role.BASE/meta/main.yml
+  copy: src=/etc/ansible/tasks/main.yml dest=/etc/ansible/roles/role.BASE/meta/main.yml force=no owner=root group=root mode=0644
+- name: Create /etc/ansible/roles/role.BASE/handlers/main.yml
+  copy: src=/etc/ansible/tasks/main.yml dest=/etc/ansible/roles/role.BASE/handlers/main.yml force=no owner=root group=root mode=0644
+- name: Create /etc/ansible/roles/role.BASE/vars/main.yml
+  copy: src=/etc/ansible/tasks/main.yml dest=/etc/ansible/roles/role.BASE/vars/main.yml force=no owner=root group=root mode=0644
+- name: Create /etc/ansible/roles/role.BASE/defaults/main.yml
+  copy: src=/etc/ansible/tasks/main.yml dest=/etc/ansible/roles/role.BASE/defaults/main.yml force=no owner=root group=root mode=0644
+- name: Create /etc/ansible/roles/role.BASE/tasks/main.yml
+  copy: src=/etc/ansible/tasks/main.yml dest=/etc/ansible/roles/role.BASE/tasks/main.yml force=no owner=root group=root mode=0644
+  

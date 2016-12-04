@@ -1,11 +1,10 @@
 ---
 - name: Create Standard Users
   hosts: all
-  vars:
+#  remote_user: root
   tasks:
 #  - include: ../tasks/create.user.gavine.yml
   - include: ../tasks/create.user.lilye.yml
   - include: ../tasks/create.user.rachellef.yml
   - include: ../tasks/create.user.lynnee.yml
-  - include: ../tasks/create.user.mattb.yml
-  handlers:
+

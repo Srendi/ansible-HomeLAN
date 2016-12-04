@@ -1,6 +1,5 @@
 ---
-# Create Standard Users
-
+# Create Standard users
 - name: Create Group lynnee
   group: name=lynnee gid=1004 state=present
 - name: Create user lynnee
@@ -14,7 +13,8 @@
     group=lynnee
     groups=lynnee,adm,cdrom,sudo,dip,plugdev,lpadmin,sambashare
     append=yes
-    password={{ lynnee_password }}
+    password=$6$dDeM4mSMMNV9Wb$Xh.4fzI9oF5TqnkKp1Px2LaQeDHf7lQPl6U7WyeNr4484uuaMyDAPdzhHhJ5qaIruOUpAmxiOh0nCvTCJ.KqR/
     update_password=always
     state=present
-  no_log: True
+#  no_log: True
+

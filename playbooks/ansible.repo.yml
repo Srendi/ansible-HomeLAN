@@ -1,8 +1,7 @@
 ---
 - name: Setup Ansible repo
   hosts: ansible
-  vars:
 #  remote_user: root
   tasks:
   - include: ../tasks/ansible.repo.yml
-  handlers:
+
