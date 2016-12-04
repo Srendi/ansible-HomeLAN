@@ -1,6 +1,0 @@
----
-- name: Install RarTracker CouchPotato Friendly Torrent Tracker
-  hosts: rartracker
-  tasks:
-  - include: ../tasks/install.rartracker.yml
-
